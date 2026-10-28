@@ -8,8 +8,7 @@
   <title>date</title>
 
   <style>
-    
-* {
+    * {
   box-sizing: border-box;
 }
 
@@ -65,8 +64,8 @@ h1 {
   margin: 18px 0 8px;
 }
 
-input[type="date"],
-input[type="time"] {
+input[type='date'],
+input[type='time'] {
   display: block;
   width: 100%;
   padding: 12px;
@@ -161,7 +160,9 @@ button {
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
 button:hover {
@@ -222,8 +223,13 @@ button:hover {
 }
 
 @keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.12); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.12);
+  }
 }
 
 @keyframes appear {
@@ -247,7 +253,6 @@ button:hover {
   }
 }
 
-
 /* Floating hearts animation */
 .floating-heart {
   position: fixed;
@@ -269,20 +274,16 @@ button:hover {
 
   15% {
     opacity: 1;
-    transform: translate(
-      calc(var(--dx) * 0.2),
-      calc(var(--dy) * 0.2)
-    ) scale(1.2) rotate(20deg);
+    transform: translate(calc(var(--dx) * 0.2), calc(var(--dy) * 0.2))
+      scale(1.2) rotate(20deg);
   }
 
   100% {
-    transform: translate(var(--dx), var(--dy))
-      scale(0.8) rotate(var(--rotation));
+    transform: translate(var(--dx), var(--dy)) scale(0.8)
+      rotate(var(--rotation));
     opacity: 0;
   }
 }
-
-
 
 /* 💔 Broken heart animation */
 .broken-heart-overlay {
@@ -306,7 +307,8 @@ button:hover {
 }
 
 @keyframes heartbreakFlash {
-  0%, 100% {
+  0%,
+  100% {
     background: rgba(255, 220, 235, 0);
   }
   12% {
@@ -359,7 +361,8 @@ button:hover {
 }
 
 @keyframes splitLeft {
-  0%, 35% {
+  0%,
+  35% {
     opacity: 0;
     transform: translate(-50%, -50%);
   }
@@ -373,7 +376,8 @@ button:hover {
 }
 
 @keyframes splitRight {
-  0%, 35% {
+  0%,
+  35% {
     opacity: 0;
     transform: translate(-50%, -50%);
   }
@@ -387,15 +391,53 @@ button:hover {
 }
 
 @keyframes heartbreakShake {
-  0%, 100% { transform: translateX(0); }
-  20% { transform: translateX(-5px); }
-  40% { transform: translateX(5px); }
-  60% { transform: translateX(-3px); }
-  80% { transform: translateX(3px); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-5px);
+  }
+  40% {
+    transform: translateX(5px);
+  }
+  60% {
+    transform: translateX(-3px);
+  }
+  80% {
+    transform: translateX(3px);
+  }
 }
 
 body.heartbreak-shake {
   animation: heartbreakShake 0.35s ease-in-out;
+}
+
+.option-container {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.option-container label {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.option-container input {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+.option-container input:focus {
+  outline: none;
+  border-color: #007bff;
 }
 
   </style>
@@ -403,100 +445,114 @@ body.heartbreak-shake {
   
 </head>
 <body>
-  
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A Little Date Request 💌</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A Little Date Request 💌</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="container" id="requestScreen">
+      <div class="heart">💌</div>
 
-  <main class="container" id="requestScreen">
-    <div class="heart">💌</div>
-
-    <h1>Sooo, I have a tiny question for you... 🙈💗</h1>
-    <p class="subtitle">
-      What if we dressed up a little, spent some time together, and made an ordinary day feel a little special? Would you go on a date with me? 🫶🏻
-    </p>
-
-    <section class="details">
-      <label for="date">📅 Choose our date</label>
-      <input type="date" id="date" required>
-
-      <label for="time">⏰ Choose our time</label>
-      <input type="time" id="time" required>
-
-      <label>💕 What would you like to do?</label>
-
-      <div class="activities">
-        <label class="activity">
-          <input type="radio" name="activity"
-                 value="Relaxing walk with coffee" checked>
-          <span>☕</span>
-          <strong>Long Walk + Coffee</strong>
-          <small>A peaceful little walk</small>
-        </label>
-
-        <label class="activity">
-          <input type="radio" name="activity"
-                 value="Lunch / Dinner">
-          <span>🍝</span>
-          <strong>Lunch / Dinner</strong>
-          <small>Good food, good company</small>
-        </label>
-
-        <label class="activity">
-          <input type="radio" name="activity"
-                 value="Games">
-          <span>🎮</span>
-          <strong>Lunch and Games(bowling, gokart etc)</strong>
-          <small>Let's have some fun</small>
-        </label>
-      </div>
-    </section>
-
-    <h2 class="question">So... is that a YES? 🥹</h2>
-    <p id="noMessage" class="no-message" aria-live="polite"></p>
-
-    <div class="buttons">
-      <button id="yesBtn" class="yes-btn">YES! 💖</button>
-      <button id="noBtn" class="no-btn">No 🙈</button>
-    </div>
-  </main>
-
-  <main class="container success hidden" id="successScreen">
-    <div class="heart">💖</div>
-
-    <h1>IT'S A DATEEE! 🥹❤️</h1>
-    <p class="subtitle">You have no idea how happy this makes me. Here's to good food, little adventures, silly conversations, stolen glances, and a little more time with you. 🌷✨</p>
-
-    <div class="ticket">
-      <h2>💕 Our Little Date 💕</h2>
-
-      <p>📅 <strong>Date:</strong> <span id="chosenDate"></span></p>
-      <p>⏰ <strong>Time:</strong> <span id="chosenTime"></span></p>
-      <p>✨ <strong>Plan:</strong> <span id="chosenActivity"></span></p>
-
-      <p class="love-note">
-        Looking forward to spending time with you! 🥰
+      <h1>Sooo, I have a tiny question for you... 🙈💗</h1>
+      <p class="subtitle">
+        What if we dressed up a little, spent some time together, and made an
+        ordinary day feel a little special? Would you go on a date with me? 🫶🏻
       </p>
-    </div>
 
-    <div class="screenshot-note">
-      📸 <strong>One little thing!</strong>
-      <p>Hurry uppp!! 🏃🏻‍♀️💗 Screenshot this and send it to Ravi… He is waiting to smile because of you! 🙈💌</p>
-    </div>
+      <section class="details">
+        <label for="date">📅 Choose our date</label>
+        <input type="date" id="date" required />
 
-    <button class="yes-btn" id="backBtn">
-      Back to our date 💗
-    </button>
-  </main>
+        <label for="time">⏰ Choose our time</label>
+        <input type="time" id="time" required />
 
-  <script src="script.js"></script>
-</body>
+        <label>💕 What would you like to do?</label>
+
+        <div class="activities">
+          <label class="activity">
+            <input
+              type="radio"
+              name="activity"
+              value="Relaxing walk with coffee"
+              checked
+            />
+            <span>☕</span>
+            <strong>Long Walk + Coffee</strong>
+            <small>A peaceful little walk</small>
+          </label>
+
+          <label class="activity">
+            <input type="radio" name="activity" value="Lunch / Dinner" />
+            <span>🍝</span>
+            <strong>Lunch / Dinner</strong>
+            <small>Good food, good company</small>
+          </label>
+
+          <label class="activity">
+            <input type="radio" name="activity" value="Games" />
+            <span>🎮</span>
+            <strong>Lunch and Games(bowling, gokart etc)</strong>
+            <small>Let's have some fun</small>
+          </label>
+
+          <div class="option-container">
+            <label for="yourOption">Your option</label>
+            <input
+              type="text"
+              id="yourOption"
+              name="activity"
+              placeholder="What would you like to do?"
+            />
+          </div>
+        </div>
+      </section>
+
+      <h2 class="question">So... is that a YES? 🥹</h2>
+      <p id="noMessage" class="no-message" aria-live="polite"></p>
+
+      <div class="buttons">
+        <button id="yesBtn" class="yes-btn">YES! 💖</button>
+        <button id="noBtn" class="no-btn">No 🙈</button>
+      </div>
+    </main>
+
+    <main class="container success hidden" id="successScreen">
+      <div class="heart">💖</div>
+
+      <h1>IT'S A DATEEE! 🥹❤️</h1>
+      <p class="subtitle">
+        You have no idea how happy this makes me. Here's to good food, little
+        adventures, silly conversations, stolen glances, and a little more time
+        with you. 🌷✨
+      </p>
+
+      <div class="ticket">
+        <h2>💕 Our Little Date 💕</h2>
+
+        <p>📅 <strong>Date:</strong> <span id="chosenDate"></span></p>
+        <p>⏰ <strong>Time:</strong> <span id="chosenTime"></span></p>
+        <p>✨ <strong>Plan:</strong> <span id="chosenActivity"></span></p>
+
+        <p class="love-note">Looking forward to spending time with you! 🥰</p>
+      </div>
+
+      <div class="screenshot-note">
+        📸 <strong>One little thing!</strong>
+        <p>
+          Hurry uppp!! 🏃🏻‍♀️💗 Screenshot this and send it to Ravi… He is waiting
+          to smile because of you! 🙈💌
+        </p>
+      </div>
+
+      <button class="yes-btn" id="backBtn">Back to our date 💗</button>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
 </html>
 
 
